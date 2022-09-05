@@ -40,7 +40,7 @@ buildData {
 ```
 
 ### Suggested config
-This applies SlEl expression language to SemVer 2.0 and updates the source file as well as the target file.
+This applies [SlEl](https://github.com/Legyver/utils/tree/master/utils.slel) expression language to SemVer 2.0 and updates the source file as well as the target file.
 
 The below will apply SemVer 2.0 formatting to your gradle version.
 - By default, the gradle version includes
@@ -160,3 +160,7 @@ The table below lists the version formats shipped out of the box.  You can of co
 | build.version.pre-release.build| ${build.version.pre-release}+b${build.number} | SemVer 2.0 |
 | build.version.release | ${major.version}.${minor.version}.${patch.number} | SemVer 2.0 |
 | build.version.release.build | ${build.version.release}+b${build.number} | SemVer 2.0 |
+
+
+## Third party dependencies (Thank You!)
+- [org.apache.commons:commons-lang3](https://github.com/apache/commons-lang/blob/master/LICENSE.txt)
