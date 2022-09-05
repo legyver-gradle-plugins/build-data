@@ -1,0 +1,65 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'com.gradle.plugin-publish' version '0.18.0'
+}
+
+group 'com.legyver'
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+ext {
+    legyverUtilsVersion = '3.2.1'
+}
+
+dependencies {
+    implementation 'org.ow2.asm:asm:8.0.1'
+    api group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
+    api group: 'com.legyver', name: 'utils.propl', version: legyverUtilsVersion
+    api group: 'com.legyver', name: 'utils.slel', version: legyverUtilsVersion
+    api group: 'com.legyver', name: 'utils.propcross', version: legyverUtilsVersion
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.23.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+pluginBundle {
+    website = 'https://github.com/orgs/legyver-gradle-plugins/build-data'
+    vcsUrl = 'https://github.com/legyver-gradle-plugins/build-data.git'
+    tags = ['build data', 'semver', 'build.properties']
+}
+
+gradlePlugin {
+    plugins {
+        buildData {
+            id = "com.legyver.build-data"
+            displayName = "Update build data"
+            description  = "Update the build data from a declared file ensuring various build files stay in sync"
+            implementationClass = "com.legyver.gradle.builddata.BuildDataPlugin"
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = 'localPluginRepository'
+            url = 'C:/dev/local-plugin-repository'
+        }
+    }
+}
+
+updateReadmeVersion {
+    versionScheme = 'SEMVER'
+    versionSchemeVersion = '2.0'
+}
