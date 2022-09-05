@@ -34,7 +34,7 @@ test {
 }
 
 pluginBundle {
-    website = 'https://github.com/orgs/legyver-gradle-plugins/build-data'
+    website = 'https://github.com/legyver-gradle-plugins/build-data'
     vcsUrl = 'https://github.com/legyver-gradle-plugins/build-data.git'
     tags = ['build data', 'semver', 'build.properties']
 }
